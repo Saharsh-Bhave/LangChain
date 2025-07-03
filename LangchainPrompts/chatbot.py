@@ -6,9 +6,15 @@ load_dotenv()
 
 model = ChatOpenAI()
 
+conversations = []
+
 while True:
     user_input = input("You: ")
+    conversations.append(user_input)
     if user_input == "exit" :
         break
-    result = model.invoke(user_input)
+    result = model.invoke(conversations)
+    conversations.append(result.content)
     print("ChatBot: ", result.content)
+
+print(conversations)
