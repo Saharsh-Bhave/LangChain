@@ -1,5 +1,5 @@
 from langchain_openai import ChatOpenAI
-from typing import TypedDict, Annotated, Optional
+from typing import TypedDict, Annotated, Optional, Literal
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -12,7 +12,7 @@ class Review(TypedDict):
     
     key_themes: Annotated[list[str], "Write down all the key themes mentioned in the review."]
     summary: Annotated[str, "A brief summary of the review."]
-    sentiment: Annotated[str, "Return sentiment of the review, either positive, negative or neutral."]
+    sentiment: Annotated[Literal["pos", "neg"], "Return sentiment of the review, either positive, negative or neutral."]
     pros: Annotated[Optional[list[str]], "Write down all the pros inside a list."] # optional tells this is optional as review might not have pros/cons.
     cons: Annotated[Optional[list[str]], "Write down all the cons in a list."]
 
@@ -36,6 +36,6 @@ Bulky and heavy-not great for one-handed use
 Bloatware still exists in One UI
 Expensive compared to competitors""")
 
-print(result)
-print(result['summary'])
+#print(result)
+#print(result['summary'])
 print(result['sentiment'])
