@@ -18,3 +18,5 @@ chain = prompt | model | parser
 
 result = chain.invoke({'topic': 'Hip-Hop'})
 print(result)
+
+#chain.get_graph().print_ascii()
